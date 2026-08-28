@@ -27,6 +27,38 @@ Copie `.env.local.example` para `.env.local` e preencha:
 | `NEXT_PUBLIC_SITE_URL` | Dominio publico. Usado em canonical, Open Graph, sitemap e structured data. |
 | `NEXT_PUBLIC_CONTACT_EMAIL` | E-mail comercial exibido no rodape (opcional). |
 
+## Deploy na Vercel
+
+O projeto e Next.js padrao — a Vercel detecta tudo sozinha (build `next build`,
+output `.next`, install `npm ci` a partir do `package-lock.json`). Nao ha
+`vercel.json`: nenhuma configuracao extra e necessaria.
+
+Importar o repositorio:
+
+1. Abra <https://vercel.com/new> e importe `kauaxp77/Requinte_coffee`.
+2. Framework Preset: **Next.js** (ja vem detectado). Nao mude build nem output.
+3. Em **Environment Variables**, adicione as tres antes do primeiro deploy —
+   elas sao `NEXT_PUBLIC_*`, ou seja, entram no bundle **em tempo de build**:
+   mudar depois exige um novo deploy (Redeploy), nao basta salvar.
+
+| Variavel | Valor | Se faltar |
+| --- | --- | --- |
+| `NEXT_PUBLIC_WHATSAPP_NUMBER` | `5561XXXXXXXXX` — so digitos, com 55 e DDD | Todos os botoes de WhatsApp caem no Instagram |
+| `NEXT_PUBLIC_SITE_URL` | O dominio final, ex.: `https://requintecoffeebuffet.com.br` | Canonical, Open Graph e sitemap apontam para o dominio padrao do codigo |
+| `NEXT_PUBLIC_CONTACT_EMAIL` | E-mail comercial (opcional) | O rodape mostra `[INSERIR E-MAIL OFICIAL]` |
+
+Cada push na branch `main` gera um novo deploy de producao automaticamente.
+
+Pela CLI, se preferir:
+
+```bash
+npm i -g vercel
+vercel login
+vercel link
+vercel env add NEXT_PUBLIC_WHATSAPP_NUMBER production
+vercel --prod
+```
+
 ## Conteudo pendente
 
 Todo texto do site vive em [`content/site.ts`](content/site.ts). Nada foi
