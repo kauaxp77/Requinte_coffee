@@ -1,0 +1,132 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  body {
+    @apply bg-ink text-cream font-sans antialiased;
+    overflow-x: hidden;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: #c9a96e;
+    color: #0a0a0a;
+  }
+
+  :focus-visible {
+    outline: 2px solid #c9a96e;
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-serif font-light;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+}
+
+@layer components {
+  .shell {
+    @apply mx-auto w-full max-w-shell px-6 sm:px-8 lg:px-12;
+  }
+
+  .eyebrow {
+    @apply font-sans text-[11px] font-medium uppercase tracking-eyebrow text-gold;
+  }
+
+  .rule-gold {
+    @apply block h-px w-12 bg-gold/60;
+  }
+
+  .btn {
+    @apply inline-flex min-h-[52px] items-center justify-center gap-2 px-8 text-[12px]
+           font-medium uppercase tracking-[0.18em] transition-all duration-500 ease-silk;
+  }
+
+  .btn-primary {
+    @apply btn bg-gold text-ink hover:bg-cream;
+  }
+
+  .btn-ghost {
+    @apply btn border border-cream/25 text-cream hover:border-gold hover:text-gold;
+  }
+
+  .btn-dark {
+    @apply btn border border-ink/25 text-ink hover:border-ink hover:bg-ink hover:text-cream;
+  }
+
+  .field-label {
+    @apply mb-2 block text-[11px] uppercase tracking-[0.18em] text-cream/50;
+  }
+
+  .field {
+    @apply w-full border-b border-cream/20 bg-transparent pb-3 text-[15px] text-cream
+           outline-none transition-colors duration-300 placeholder:text-cream/25
+           focus:border-gold;
+  }
+
+  select.field option {
+    background-color: #121212;
+    color: #f7f4ee;
+  }
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .grain::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

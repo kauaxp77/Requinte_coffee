@@ -1,0 +1,13 @@
+node_modules
+.next
+out
+.env.local
+.DS_Store
+*.tsbuildinfo
+next-env.d.ts
+
+# Canvas de design gerado pelo seeder (3 MB, reconstruivel a partir de design/*.dc.html)
+design/requinte-coffee-buffet-landing.html
+
+# Vercel
+.vercel
