@@ -11,3 +11,11 @@ design/requinte-coffee-buffet-landing.html
 
 # Vercel
 .vercel
+
+# Variáveis de ambiente (o modelo .env.local.example continua versionado)
+.env
+.env*.local
+
+# Logs e sistema operacional
+*.log
+Thumbs.db
